@@ -1,8 +1,8 @@
 // Labwise landing page
 // Edit these links in one place. Leave a value empty ("") to show a "coming soon" note instead.
 const LINKS = {
-  caseStudy: "",   // Behance case study URL, when it's live
-  behance: "",     // Behance profile URL
+  caseStudy: "https://www.behance.net/gallery/257821141/Labwise-Virtual-science-lab-UX-case-study",
+  behance: "https://www.behance.net/gallery/257821141/Labwise-Virtual-science-lab-UX-case-study", // swap for the Behance profile URL
   prototype: "https://www.figma.com/proto/plmRXzH01snEgpTgKuavSi/Labwise?page-id=27%3A2&node-id=113-5550&starting-point-node-id=113%3A5550&scaling=scale-down&content-scaling=fixed",
   portfolio: "https://yosseedesignerportfolio.framer.website",
   x: "https://x.com/yosseedesign"
@@ -26,6 +26,8 @@ document.querySelectorAll("[data-link]").forEach((a) => {
   const url = LINKS[a.dataset.link];
   if (url) {
     a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
   } else {
     a.removeAttribute("target");
     a.addEventListener("click", (e) => {
