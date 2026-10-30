@@ -49,45 +49,56 @@ note.className = "sr-only";
 note.textContent = "Coming soon. Store links go live at launch.";
 document.body.appendChild(note);
 
-// Mobile menu
+// Mobile menu · lab tray
 const menuBtn = document.querySelector("[data-menu]");
-const nav = document.querySelector(".nav");
-menuBtn.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
+const header = document.querySelector("[data-header]");
+const tray = document.getElementById("lab-tray");
+const scrim = document.querySelector("[data-scrim]");
+const label = menuBtn.querySelector(".menu-label");
+let lastFocus = null;
+function setMenu(open) {
   menuBtn.setAttribute("aria-expanded", String(open));
-  menuBtn.querySelector(".sr-only").textContent = open ? "Close menu" : "Open menu";
-  menuBtn.querySelector("use").setAttribute("href", open ? "#i-close" : "#i-menu");
-});
-nav.querySelectorAll(".nav-links a").forEach((a) =>
-  a.addEventListener("click", () => {
-    if (nav.classList.contains("open")) menuBtn.click();
+  label.textContent = open ? "Close" : "Menu";
+  if (open) {
+    lastFocus = document.activeElement;
+    tray.hidden = false; scrim.hidden = false;
+    requestAnimationFrame(() => header.classList.add("menu-open"));
+    document.body.style.overflow = "hidden";
+    tray.querySelector("a").focus({ preventScroll: true });
+  } else {
+    header.classList.remove("menu-open");
+    document.body.style.overflow = "";
+    const done = () => { tray.hidden = true; scrim.hidden = true; };
+    reduceMotion ? done() : setTimeout(done, 220);
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+}
+menuBtn.addEventListener("click", () => setMenu(menuBtn.getAttribute("aria-expanded") !== "true"));
+scrim.addEventListener("click", () => setMenu(false));
+tray.querySelectorAll(".tt").forEach((a) =>
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute("href"));
+    lastFocus = null;
+    setMenu(false);
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+    }, reduceMotion ? 0 : 240);
   })
 );
-
-// Rotating subject word
-const word = document.querySelector("[data-rotator]");
-const subjects = [
-  { t: "science", bg: "#FFB224", fg: "#0D1020", sh: "#6B4600" },
-  { t: "chemistry", bg: "#FF6A3D", fg: "#0D1020", sh: "#3A1E16" },
-  { t: "physics", bg: "#2F8CFF", fg: "#0D1020", sh: "#122A4D" },
-  { t: "biology", bg: "#1FAE68", fg: "#0D1020", sh: "#0F3322" },
-  { t: "engineering", bg: "#8B5CF6", fg: "#FFFFFF", sh: "#261847" }
-];
-if (word && !reduceMotion) {
-  let i = 0;
-  setInterval(() => {
-    i = (i + 1) % subjects.length;
-    word.classList.add("swap");
-    setTimeout(() => {
-      const s = subjects[i];
-      word.textContent = s.t;
-      word.style.background = s.bg;
-      word.style.color = s.fg;
-      word.style.boxShadow = `0 6px 0 ${s.sh}`;
-      word.classList.remove("swap");
-    }, 250);
-  }, 2400);
-}
+document.addEventListener("keydown", (e) => {
+  if (menuBtn.getAttribute("aria-expanded") !== "true") return;
+  if (e.key === "Escape") { setMenu(false); return; }
+  if (e.key === "Tab") {
+    const f = [menuBtn, ...tray.querySelectorAll("a")];
+    const i = f.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+  }
+});
+window.matchMedia("(min-width: 901px)").addEventListener("change", (m) => { if (m.matches) setMenu(false); });
 
 // Reveal on scroll
 const reveals = document.querySelectorAll(".reveal");
