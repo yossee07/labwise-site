@@ -98,7 +98,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .float-card .mono{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em}
 .float-card .violet{color:var(--violet-900)}
 .float-card .dark{color:var(--text);font-weight:500;font-size:14px}
-.disc{display:grid;place-items:center;width:40px;height:40px;border-radius:12px}
+.disc,.float-card .disc{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px}
 .disc.leaf{background:var(--leaf-50);color:var(--leaf)}
 .level{display:flex!important;align-items:center;gap:4px;margin-top:4px}
 .level i{width:18px;height:6px;border-radius:3px;background:var(--cool-200)}
@@ -373,7 +373,9 @@ h2{font-family:var(--font-display);font-weight:800;font-size:clamp(36px,4.4vw,64
   .phone img{border-radius:33px}
   .phone::before{top:15px;width:68px;height:19px}
   .float-card{padding:8px 12px 8px 8px;gap:8px;border-radius:14px}
-  .float-card .r,.float-card .mk,.disc{width:30px;height:32px}
+  .float-card .r,.float-card .mk{width:30px;height:32px}
+  .float-card .disc{width:32px;height:32px;border-radius:10px}
+  .float-card .disc .ic{width:20px;height:20px}
   .float-card .fc-big{font-size:16px}
   .fc-1{left:4px;top:90px}
   .fc-3{right:4px;top:150px}
