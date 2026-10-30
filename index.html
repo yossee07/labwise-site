@@ -76,17 +76,18 @@
       <span class="menu-label">Menu</span>
     </button>
   </nav>
-  <div class="tray-scrim" data-scrim hidden></div>
   <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
-    <p class="tray-eyebrow">OPEN A SECTION</p>
-    <ul class="tray-tiles">
-      <li><a class="tt coral" href="#subjects"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-flask"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>Subjects</b><small>Four sciences, one lab</small></a></li>
-      <li><a class="tt sky" href="#how"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-steps"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>How it works</b><small>Brief, bench, debrief</small></a></li>
-      <li><a class="tt violet" href="#features"><span class="tt-top"><span class="tt-disc"><svg class="mk"><use href="#mark"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>AI Lab Assistant</b><small>Hints, not answers</small></a></li>
-      <li><a class="tt leaf" href="#faq"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-help"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>FAQ</b><small>Questions, answered</small></a></li>
+    <ul class="tray-links">
+      <li><a href="#subjects" style="--c:var(--coral)"><i></i><span class="n">01</span><span class="t">Subjects</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#how" style="--c:var(--sky)"><i></i><span class="n">02</span><span class="t">How it works</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#features" style="--c:var(--violet)"><i></i><span class="n">03</span><span class="t">AI Lab Assistant</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="#faq" style="--c:var(--leaf)"><i></i><span class="n">04</span><span class="t">FAQ</span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
     </ul>
-    <a class="btn btn-primary btn-block" href="#" data-link="caseStudy">Read the case study <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    <div class="tray-foot"><a href="#" data-link="prototype" target="_blank" rel="noopener">Try the prototype ↗</a><span>Coming to iOS and Android</span></div>
+    <div class="tray-bottom">
+      <a class="btn btn-primary btn-block" href="#" data-link="caseStudy">Read the case study <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-dark btn-block" href="#" data-link="prototype" target="_blank" rel="noopener">Try the prototype</a>
+      <p>Coming to iOS and Android</p>
+    </div>
   </div>
 </header>
 
@@ -139,8 +140,7 @@
     <p class="eyebrow">WHY LABWISE</p>
     <h2 id="why-title">Many school labs look like this.</h2>
     <p class="lede">The room is there. The equipment often isn’t. So students read about practicals instead of doing them.</p>
-    <div class="tray-scrim" data-scrim hidden></div>
-  <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <p class="tray-eyebrow">OPEN A SECTION</p>
     <ul class="tray-tiles">
       <li><a class="tt coral" href="#subjects"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-flask"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>Subjects</b><small>Four sciences, one lab</small></a></li>
@@ -181,8 +181,7 @@
   <header class="sec-head split reveal">
     <div><p class="eyebrow">HOW IT WORKS</p><h2 id="how-title">One practical, start to finish.</h2></div>
     <p class="lede">Every practical in every subject runs the same way, so students always know where they are.</p>
-    <div class="tray-scrim" data-scrim hidden></div>
-  <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <p class="tray-eyebrow">OPEN A SECTION</p>
     <ul class="tray-tiles">
       <li><a class="tt coral" href="#subjects"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-flask"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>Subjects</b><small>Four sciences, one lab</small></a></li>
@@ -250,8 +249,7 @@
   <header class="sec-head split reveal">
     <div><p class="eyebrow">FEATURES</p><h2 id="feat-title">Everything a practical needs.</h2></div>
     <p class="lede">An AI Lab Assistant, rewards that mark real work, skills you can see grow, and settings that fit every student.</p>
-    <div class="tray-scrim" data-scrim hidden></div>
-  <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <p class="tray-eyebrow">OPEN A SECTION</p>
     <ul class="tray-tiles">
       <li><a class="tt coral" href="#subjects"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-flask"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>Subjects</b><small>Four sciences, one lab</small></a></li>
@@ -370,8 +368,7 @@
   <header class="sec-head split reveal">
     <div><p class="eyebrow">SUBJECTS</p><h2 id="subj-title">Four sciences. One lab.</h2></div>
     <p class="lede">Every subject gets its own bench, equipment and practicals, built the same way: you do the work, Labwise helps you understand it.</p>
-    <div class="tray-scrim" data-scrim hidden></div>
-  <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="lab-tray" id="lab-tray" role="dialog" aria-modal="true" aria-label="Menu" hidden>
     <p class="tray-eyebrow">OPEN A SECTION</p>
     <ul class="tray-tiles">
       <li><a class="tt coral" href="#subjects"><span class="tt-top"><span class="tt-disc"><svg class="ic"><use href="#i-flask"/></svg></span><svg class="ic tt-arrow"><use href="#i-arrow"/></svg></span><b>Subjects</b><small>Four sciences, one lab</small></a></li>

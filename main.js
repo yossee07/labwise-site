@@ -53,7 +53,6 @@ document.body.appendChild(note);
 const menuBtn = document.querySelector("[data-menu]");
 const header = document.querySelector("[data-header]");
 const tray = document.getElementById("lab-tray");
-const scrim = document.querySelector("[data-scrim]");
 const label = menuBtn.querySelector(".menu-label");
 let lastFocus = null;
 function setMenu(open) {
@@ -61,21 +60,20 @@ function setMenu(open) {
   label.textContent = open ? "Close" : "Menu";
   if (open) {
     lastFocus = document.activeElement;
-    tray.hidden = false; scrim.hidden = false;
+    tray.hidden = false;
     requestAnimationFrame(() => header.classList.add("menu-open"));
     document.body.style.overflow = "hidden";
     tray.querySelector("a").focus({ preventScroll: true });
   } else {
     header.classList.remove("menu-open");
     document.body.style.overflow = "";
-    const done = () => { tray.hidden = true; scrim.hidden = true; };
-    reduceMotion ? done() : setTimeout(done, 220);
+    const done = () => { tray.hidden = true; };
+    reduceMotion ? done() : setTimeout(done, 380);
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   }
 }
 menuBtn.addEventListener("click", () => setMenu(menuBtn.getAttribute("aria-expanded") !== "true"));
-scrim.addEventListener("click", () => setMenu(false));
-tray.querySelectorAll(".tt").forEach((a) =>
+tray.querySelectorAll(".tray-links a").forEach((a) =>
   a.addEventListener("click", (e) => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute("href"));
@@ -85,7 +83,7 @@ tray.querySelectorAll(".tt").forEach((a) =>
       target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
       target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
-    }, reduceMotion ? 0 : 240);
+    }, reduceMotion ? 0 : 400);
   })
 );
 document.addEventListener("keydown", (e) => {
