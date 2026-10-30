@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labwise · Your science lab, in your pocket</title>
+<meta name="description" content="Labwise is a virtual science lab for secondary school students. Chemistry, physics, biology and engineering practicals on your phone, with an AI Lab Assistant.">
+<meta name="theme-color" content="#3442E8">
+<meta property="og:title" content="Labwise · Your science lab, in your pocket">
+<meta property="og:description" content="Chemistry, physics, biology and engineering practicals on your phone, with an AI Lab Assistant.">
+<meta property="og:image" content="assets/hero-scene.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Icon sprite (Hugeicons stroke rounded + Labwise rewards, exported from the Labwise Figma file) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.4973 2V8.25401C14.4973 8.72617 14.7093 9.1734 15.0747 9.47239L15.7421 10.0184C18.4717 12.2518 20.2277 15.4577 20.6397 18.9604C20.8301 20.5784 19.5659 22 17.9368 22H6.05789C4.42876 22 3.16459 20.5784 3.35494 18.9604C3.76702 15.4577 5.52295 12.2518 8.25261 10.0184L8.91998 9.47239C9.28541 9.1734 9.49734 8.72617 9.49734 8.25401V2"/><path d="M7.99707 2H15.9971"/><path d="M5.49707 14.0183C5.74095 14.0063 5.99072 14 6.24707 14C9.99707 14 13.7471 17 17.4971 17C18.2729 17 18.9332 16.9384 19.4971 16.8334"/></symbol>
+  <symbol id="i-magnet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.925 2.5H9.15C9.15 2.5 8.2 7.7 8.2 10.1C8.2 13.1 10.1 15.5 12 15.5C13.9 15.5 15.8 13.1 15.8 10.1C15.8 7.7 14.85 2.5 14.85 2.5H20.075C20.075 2.5 21.5 7.13842 21.5 11.5C21.5 17 17.7 21.5 12 21.5C6.3 21.5 2.5 17 2.5 11.5C2.5 7.13842 3.925 2.5 3.925 2.5Z"/><path d="M2.97266 7.25H8.19766M15.7977 7.25H21.0227"/></symbol>
+  <symbol id="i-microscope" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21.5H20"/><path d="M12.5 9.5C12.5 10.3284 11.8284 11 11 11C10.1716 11 9.5 10.3284 9.5 9.5C9.5 8.67157 10.1716 8 11 8C11.8284 8 12.5 8.67157 12.5 9.5Z"/><path d="M18 18.5H12.5M9.5 9.5C7.01472 9.5 5 11.5147 5 14C5 16.4853 7.01472 18.5 9.5 18.5H10"/><path d="M13.5 21.5L12.2279 17.6838C12.0918 17.2754 11.7097 17 11.2792 17H11.2208C10.7903 17 10.4082 17.2754 10.2721 17.6838L9 21.5"/><path d="M15.8023 15.5L18 14.2282M10.3859 8.13107L9.34041 6.31596C8.63965 5.09933 9.05551 3.54364 10.2693 2.84121C11.483 2.13879 13.035 2.55564 13.7358 3.77227L16.7809 9.05924C17.2553 9.88279 17.4925 10.2946 17.4925 10.7035C17.4925 10.9714 17.4221 11.2346 17.2885 11.4666C17.0845 11.8208 16.6737 12.0585 15.8521 12.534C15.0305 13.0095 14.6197 13.2472 14.2117 13.2472C13.9445 13.2472 13.6819 13.1767 13.4504 13.0427C13.0971 12.8383 12.8599 12.4265 12.3856 11.6029L11.8758 10.7179"/></symbol>
+  <symbol id="i-plant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10.5C14.5 10.5 12 12.5 12 15"/><path d="M6 15H18"/><path d="M7 15L7.50938 18.5657C7.7433 20.2031 7.86026 21.0218 8.42419 21.5109C8.98812 22 9.81514 22 11.4692 22H12.5308C14.1849 22 15.0119 22 15.5758 21.5109C16.1397 21.0218 16.2567 20.2031 16.4906 18.5657L17 15"/><path d="M10.063 8.06301C11.3123 6.8137 11.3123 4.78815 10.063 3.53884C8.17794 1.65376 4.03078 2.03078 4.03078 2.03078C4.03078 2.03078 3.65376 6.17794 5.53884 8.06301C6.78815 9.31233 8.8137 9.31233 10.063 8.06301Z"/><path d="M14.8031 10.1969C15.874 11.2677 17.6102 11.2677 18.681 10.1969C20.2968 8.58109 19.9736 5.02638 19.9736 5.02638C19.9736 5.02638 16.4189 4.70322 14.8031 6.319C13.7323 7.38985 13.7323 9.12602 14.8031 10.1969Z"/><path d="M10 8.5C10 8.5 12 11 12 14.9993"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12C4 8.22876 4 6.34315 5.17157 5.17157C6.34315 4 8.22876 4 12 4C15.7712 4 17.6569 4 18.8284 5.17157C20 6.34315 20 8.22876 20 12C20 15.7712 20 17.6569 18.8284 18.8284C17.6569 20 15.7712 20 12 20C8.22876 20 6.34315 20 5.17157 18.8284C4 17.6569 4 15.7712 4 12Z"/><path d="M9.5 2V4M14.5 2V4M9.5 20V22M14.5 20V22M13 9L9 13M15 13L13 15M22 14.5H20M4 9.5H2M4 14.5H2M22 9.5H20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 14L8.5 17.5L19 6.5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.517 17.0359C16.863 15.1379 18.536 14.1889 18.89 12.8459C19.037 12.2919 19.037 11.7079 18.89 11.1539C18.536 9.81091 16.863 8.86191 13.517 6.96391C10.282 5.12891 8.664 4.21191 7.36 4.57991C6.821 4.73291 6.33 5.02291 5.935 5.42191C5 6.37091 5 8.24691 5 11.9999C5 15.7529 5 17.6289 5.935 18.5779C6.33 18.9769 6.821 19.2669 7.36 19.4199C8.664 19.7879 10.282 18.8709 13.517 17.0359Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.5V15.5M12 15.5V17.5M12 15.5C12.5523 15.5 13 15.0523 13 14.5C13 13.9477 12.5523 13.5 12 13.5C11.4477 13.5 11 13.9477 11 14.5C11 15.0523 11.4477 15.5 12 15.5ZM16.5 9V6.5C16.5 4.01472 14.4853 2 12 2C9.51472 2 7.5 4.01472 7.5 6.5V9M4.26781 18.8447C4.49269 20.515 5.87613 21.8235 7.55966 21.9009C8.97628 21.966 10.4153 22 12 22C13.5847 22 15.0237 21.966 16.4403 21.9009C18.1239 21.8235 19.5073 20.515 19.7322 18.8447C19.8789 17.7547 20 16.6376 20 15.5C20 14.3624 19.8789 13.2453 19.7322 12.1553C19.5073 10.485 18.1239 9.17649 16.4403 9.09909C15.0237 9.03397 13.5847 9 12 9C10.4153 9 8.97628 9.03397 7.55966 9.09909C5.87613 9.17649 4.49269 10.485 4.26781 12.1553C4.12105 13.2453 4 14.3624 4 15.5C4 16.6376 4.12105 17.7547 4.26781 18.8447Z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M12.1426 7.71256C11.3463 7.71256 10.114 6.80704 8.81623 6.83896C7.10263 6.86164 5.53183 7.83268 4.64899 9.37072C2.87071 12.4577 4.19035 17.0172 5.92495 19.5263C6.77587 20.7477 7.77967 22.1219 9.11023 22.0791C10.387 22.0245 10.8658 21.25 12.4156 21.25C13.9537 21.25 14.3896 22.0791 15.742 22.0463C17.1171 22.0245 17.9899 20.8031 18.8299 19.57C19.8009 18.1521 20.2041 16.777 20.226 16.7014C20.1932 16.6905 17.5531 15.6758 17.5212 12.6215C17.4993 10.0679 19.6044 8.84656 19.7026 8.79196C18.5023 7.03636 16.6593 6.8398 16.015 6.79612C14.335 6.66508 12.928 7.71256 12.1426 7.71256ZM14.9802 5.13712C15.6883 4.28704 16.1561 3.09844 16.026 1.91992C15.0121 1.9636 13.7899 2.59612 13.0591 3.44704C12.4039 4.19968 11.8377 5.41096 11.9898 6.5668C13.1137 6.65416 14.2704 5.98888 14.9793 5.13796"/></symbol>
+  <symbol id="i-gplay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.8C5 3.2 5.6 2.8 6.1 3.1L19.3 10.9C19.9 11.3 19.9 12.7 19.3 13.1L6.1 20.9C5.6 21.2 5 20.8 5 20.2V3.8Z"/><path d="M5.3 3.4L14.6 12M14.6 12L5.3 20.6M14.6 12L17.6 9.2M14.6 12L17.6 14.8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 12H5"/><path d="M13 18C13 18 19 13.5811 19 12C19 10.4188 13 6 13 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-measure" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 10.5L19.5 12.5M14 14L16 16M10.5 17.5L12.5 19.5M10.5355 4.67767C11.9002 3.31296 12.5826 2.6306 13.3438 2.3153C14.3587 1.8949 15.4991 1.8949 16.5141 2.3153C17.2753 2.6306 17.9576 3.31296 19.3223 4.67767C20.687 6.04238 21.3694 6.72474 21.6847 7.48594C22.1051 8.50088 22.1051 9.64126 21.6847 10.6562C21.3694 11.4174 20.687 12.0998 19.3223 13.4645L13.4645 19.3223C12.0998 20.687 11.4174 21.3694 10.6562 21.6847C9.64126 22.1051 8.50088 22.1051 7.48594 21.6847C6.72474 21.3694 6.04238 20.687 4.67767 19.3223C3.31296 17.9576 2.6306 17.2753 2.3153 16.5141C1.8949 15.4991 1.8949 14.3587 2.3153 13.3438C2.6306 12.5826 3.31296 11.9002 4.67767 10.5355L10.5355 4.67767Z"/></symbol>
+  <symbol id="i-textsize" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 19L11.1069 10.7479C9.76348 6.91598 9.09177 5 8 5C6.90824 5 6.23653 6.91595 4.89312 10.7478L2 19M4.5 12H11.5M21.9692 13.9392V15.9392M21.9692 13.9392C22.0164 13.1161 22.0182 12.4891 21.9194 11.9773C21.6864 10.7709 20.4258 10.0439 19.206 9.89599C18.0385 9.75447 17.1015 10.055 16.1535 11.4363M21.9692 13.9392H19.1256C18.6887 13.9392 18.2481 13.9603 17.8272 14.0773C15.2545 14.7925 15.4431 18.4003 18.0233 18.845C18.3099 18.8944 18.6025 18.9156 18.8927 18.9026C19.5703 18.8724 20.1955 18.545 20.7321 18.1301C21.3605 17.644 21.9692 16.9655 21.9692 15.9392M21.9692 15.9392V18.4392"/></symbol>
+  <symbol id="i-contrast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12H12M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2M12 22V2M12 7H20.5M12 17H20.5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z"/></symbol>
+  <symbol id="i-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16.5C6.7725 15.4011 6 13.7768 6 12C6 8.68605 8.68629 6 12 6C15.3137 6 18 8.68605 18 12C18 13.7768 17.2275 15.4011 16 16.5"/><path d="M12 12V16.5M9.5 19H14.5M10.5 21.5H13.5M3.5 12H2.5M5.98 5.98L5.23 5.23M18.02 5.98L18.77 5.23M21.5 12H20.5M12 2.5V3.5"/></symbol>
+  <!-- Labwise rewards (white chunky, for cobalt) -->
+  <symbol id="r-xp" viewBox="0 0 48 52"><path d="M20 6.3094C22.4752 4.88034 25.5248 4.88034 28 6.3094L40.7846 13.6906C43.2598 15.1197 44.7846 17.7607 44.7846 20.6188V35.3812C44.7846 38.2393 43.2598 40.8803 40.7846 42.3094L28 49.6906C25.5248 51.1197 22.4752 51.1197 20 49.6906L7.21539 42.3094C4.74018 40.8803 3.21539 38.2393 3.21539 35.3812V20.6188C3.21539 17.7607 4.74018 15.1197 7.21539 13.6906L20 6.3094Z" fill="#7C88FF"/><path d="M20 2.3094C22.4752 0.880339 25.5248 0.880339 28 2.3094L40.7846 9.6906C43.2598 11.1197 44.7846 13.7607 44.7846 16.6188V31.3812C44.7846 34.2393 43.2598 36.8803 40.7846 38.3094L28 45.6906C25.5248 47.1197 22.4752 47.1197 20 45.6906L7.21539 38.3094C4.74018 36.8803 3.21539 34.2393 3.21539 31.3812V16.6188C3.21539 13.7607 4.74018 11.1197 7.21539 9.6906L20 2.3094Z" fill="#fff"/><path d="M13.3509 29L17.0149 23.704L13.4629 18.44H16.4709L18.7909 22.344H18.8869L21.2229 18.44H24.2629L20.6469 23.64L24.3589 29H21.3509L18.8869 24.968H18.7909L16.3589 29H13.3509ZM27.412 26.104V24.104H29.748C30.4307 24.104 30.9427 23.9653 31.284 23.688C31.6253 23.4 31.796 22.9147 31.796 22.232C31.796 21.6347 31.636 21.1813 31.316 20.872C31.0067 20.5627 30.516 20.408 29.844 20.408H27.412V18.44H29.924C30.6067 18.44 31.22 18.52 31.764 18.68C32.308 18.84 32.7773 19.08 33.172 19.4C33.5667 19.7093 33.8653 20.1093 34.068 20.6C34.2813 21.08 34.388 21.6453 34.388 22.296C34.388 23.128 34.196 23.8267 33.812 24.392C33.4387 24.9573 32.884 25.384 32.148 25.672C31.412 25.96 30.4893 26.104 29.38 26.104H27.412ZM25.524 29V18.44H28.1V29H25.524Z" fill="#3442E8"/></symbol>
+  <symbol id="r-star" viewBox="0 0 48 52"><path d="M21.3319 9.18986C22.4481 7.01871 25.5519 7.01871 26.6681 9.18986L30.6355 16.9073C31.0818 17.7753 31.9225 18.372 32.8891 18.5069L41.5528 19.7154C44.0514 20.064 45.0302 23.1534 43.1881 24.8772L37.0783 30.5946C36.3361 31.289 35.9961 32.3121 36.1749 33.3127L37.6385 41.5048C38.0734 43.9393 35.5414 45.8249 33.3335 44.7106L25.3517 40.6822C24.5016 40.2532 23.4984 40.2532 22.6483 40.6822L14.6665 44.7106C12.4586 45.8249 9.92658 43.9393 10.3615 41.5048L11.8251 33.3127C12.0039 32.3121 11.6639 31.289 10.9217 30.5946L4.81186 24.8772C2.96979 23.1534 3.94857 20.064 6.44719 19.7154L15.1109 18.5069C16.0775 18.372 16.9182 17.7753 17.3645 16.9073L21.3319 9.18986Z" fill="#7C88FF"/><path d="M21.3319 5.18986C22.4481 3.01871 25.5519 3.01871 26.6681 5.18986L30.6355 12.9073C31.0818 13.7753 31.9225 14.372 32.8891 14.5069L41.5528 15.7154C44.0514 16.064 45.0302 19.1534 43.1881 20.8772L37.0783 26.5946C36.3361 27.289 35.9961 28.3121 36.1749 29.3127L37.6385 37.5048C38.0734 39.9393 35.5414 41.8249 33.3335 40.7106L25.3517 36.6822C24.5016 36.2532 23.4984 36.2532 22.6483 36.6822L14.6665 40.7106C12.4586 41.8249 9.92658 39.9393 10.3615 37.5048L11.8251 29.3127C12.0039 28.3121 11.6639 27.289 10.9217 26.5946L4.81186 20.8772C2.96979 19.1534 3.94857 16.064 6.44719 15.7154L15.1109 14.5069C16.0775 14.372 16.9182 13.7753 17.3645 12.9073L21.3319 5.18986Z" fill="#fff"/></symbol>
+  <symbol id="r-stamp" viewBox="0 0 48 52"><path d="M24 4L29.2178 8.52694L36 7.21539L38.2553 13.7447L44.7846 16L43.4731 22.7822L48 28L43.4731 33.2178L44.7846 40L38.2553 42.2553L36 48.7846L29.2178 47.4731L24 52L18.7822 47.4731L12 48.7846L9.74473 42.2553L3.21539 40L4.52694 33.2178L0 28L4.52694 22.7822L3.21539 16L9.74473 13.7447L12 7.21539L18.7822 8.52694L24 4Z" fill="#7C88FF"/><path d="M24 0L29.2178 4.52694L36 3.21539L38.2553 9.74473L44.7846 12L43.4731 18.7822L48 24L43.4731 29.2178L44.7846 36L38.2553 38.2553L36 44.7846L29.2178 43.4731L24 48L18.7822 43.4731L12 44.7846L9.74473 38.2553L3.21539 36L4.52694 29.2178L0 24L4.52694 18.7822L3.21539 12L9.74473 9.74473L12 3.21539L18.7822 4.52694L24 0Z" fill="#fff"/><path d="M17 24L22 29L31 19" stroke="#3442E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+  <!-- On light (cobalt) -->
+  <symbol id="r-xp-l" viewBox="0 0 48 52"><path d="M20 6.3094C22.4752 4.88034 25.5248 4.88034 28 6.3094L40.7846 13.6906C43.2598 15.1197 44.7846 17.7607 44.7846 20.6188V35.3812C44.7846 38.2393 43.2598 40.8803 40.7846 42.3094L28 49.6906C25.5248 51.1197 22.4752 51.1197 20 49.6906L7.21539 42.3094C4.74018 40.8803 3.21539 38.2393 3.21539 35.3812V20.6188C3.21539 17.7607 4.74018 15.1197 7.21539 13.6906L20 6.3094Z" fill="#2A36C9"/><path d="M20 2.3094C22.4752 0.880339 25.5248 0.880339 28 2.3094L40.7846 9.6906C43.2598 11.1197 44.7846 13.7607 44.7846 16.6188V31.3812C44.7846 34.2393 43.2598 36.8803 40.7846 38.3094L28 45.6906C25.5248 47.1197 22.4752 47.1197 20 45.6906L7.21539 38.3094C4.74018 36.8803 3.21539 34.2393 3.21539 31.3812V16.6188C3.21539 13.7607 4.74018 11.1197 7.21539 9.6906L20 2.3094Z" fill="#3442E8"/><path d="M13.3509 29L17.0149 23.704L13.4629 18.44H16.4709L18.7909 22.344H18.8869L21.2229 18.44H24.2629L20.6469 23.64L24.3589 29H21.3509L18.8869 24.968H18.7909L16.3589 29H13.3509ZM27.412 26.104V24.104H29.748C30.4307 24.104 30.9427 23.9653 31.284 23.688C31.6253 23.4 31.796 22.9147 31.796 22.232C31.796 21.6347 31.636 21.1813 31.316 20.872C31.0067 20.5627 30.516 20.408 29.844 20.408H27.412V18.44H29.924C30.6067 18.44 31.22 18.52 31.764 18.68C32.308 18.84 32.7773 19.08 33.172 19.4C33.5667 19.7093 33.8653 20.1093 34.068 20.6C34.2813 21.08 34.388 21.6453 34.388 22.296C34.388 23.128 34.196 23.8267 33.812 24.392C33.4387 24.9573 32.884 25.384 32.148 25.672C31.412 25.96 30.4893 26.104 29.38 26.104H27.412ZM25.524 29V18.44H28.1V29H25.524Z" fill="#fff"/></symbol>
+  <symbol id="r-stamp-l" viewBox="0 0 48 52"><path d="M24 4L29.2178 8.52694L36 7.21539L38.2553 13.7447L44.7846 16L43.4731 22.7822L48 28L43.4731 33.2178L44.7846 40L38.2553 42.2553L36 48.7846L29.2178 47.4731L24 52L18.7822 47.4731L12 48.7846L9.74473 42.2553L3.21539 40L4.52694 33.2178L0 28L4.52694 22.7822L3.21539 16L9.74473 13.7447L12 7.21539L18.7822 8.52694L24 4Z" fill="#2A36C9"/><path d="M24 0L29.2178 4.52694L36 3.21539L38.2553 9.74473L44.7846 12L43.4731 18.7822L48 24L43.4731 29.2178L44.7846 36L38.2553 38.2553L36 44.7846L29.2178 43.4731L24 48L18.7822 43.4731L12 44.7846L9.74473 38.2553L3.21539 36L4.52694 29.2178L0 24L4.52694 18.7822L3.21539 12L9.74473 9.74473L12 3.21539L18.7822 4.52694L24 0Z" fill="#3442E8"/><path d="M17 24L22 29L31 19" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+  <symbol id="mark" viewBox="0 0 56 56"><path d="M39 0H17C7.61116 0 0 7.61116 0 17V39C0 48.3888 7.61116 56 17 56H39C48.3888 56 56 48.3888 56 39V17C56 7.61116 48.3888 0 39 0Z" fill="#3442E8"/><path d="M13 17H19M13 24H17M13 31H19" stroke="#fff" stroke-opacity=".55" stroke-width="2.6" stroke-linecap="round"/><path d="M13 38C23 44 33 44 43 38" stroke="#fff" stroke-width="4.2" stroke-linecap="round" fill="none"/><path d="M36 12C32.5 17.5 32.5 21.5 36 21.5C39.5 21.5 39.5 17.5 36 12Z" fill="#FFB224"/></symbol>
+  <symbol id="mark-white" viewBox="0 0 56 56"><path d="M39 0H17C7.61116 0 0 7.61116 0 17V39C0 48.3888 7.61116 56 17 56H39C48.3888 56 56 48.3888 56 39V17C56 7.61116 48.3888 0 39 0Z" fill="#fff"/><path d="M13 17H19M13 24H17M13 31H19" stroke="#3442E8" stroke-width="2.6" stroke-linecap="round"/><path d="M13 38C23 44 33 44 43 38" stroke="#3442E8" stroke-width="4.2" stroke-linecap="round" fill="none"/><path d="M36 12C32.5 17.5 32.5 21.5 36 21.5C39.5 21.5 39.5 17.5 36 12Z" fill="#FFB224"/></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0C13 8 16 11 24 12C16 13 13 16 12 24C11 16 8 13 0 12C8 11 11 8 12 0Z" fill="currentColor"/></symbol>
+</svg>
+
+<header class="site-header" data-header>
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="Labwise home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand-word">Labwise</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#features">AI Lab Assistant</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="nav-cta-mobile"><a class="btn btn-primary btn-block" href="#" data-link="caseStudy">Read the case study</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="#" data-link="caseStudy">Read the case study <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" data-menu>
+      <span class="sr-only">Open menu</span>
+      <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- 01 HERO -->
+<section class="hero-wrap" id="top">
+  <div class="hero">
+    <img class="hero-scene" src="assets/hero-scene.jpg" alt="" width="1536" height="864" fetchpriority="high">
+    <div class="hero-copy">
+      <p class="eyebrow-pill"><span class="new">NEW</span> A virtual science lab for secondary school</p>
+      <h1 class="hero-title">
+        <span class="line">Your <span class="rotator" aria-hidden="true"><span class="rot-word" data-rotator>science</span></span><span class="sr-only">science</span> lab,</span>
+        <span class="line">in your pocket.</span>
+      </h1>
+      <ul class="subject-chips" aria-label="Subjects">
+        <li><i style="--c:var(--coral)"></i>Chemistry</li>
+        <li><i style="--c:var(--sky)"></i>Physics</li>
+        <li><i style="--c:var(--leaf)"></i>Biology</li>
+        <li><i style="--c:var(--violet)"></i>Engineering</li>
+      </ul>
+      <p class="hero-sub">Chemistry, physics, biology and engineering practicals on your phone. Pick up the equipment, take your own readings, and learn why things happen with an AI Lab Assistant.</p>
+      <div class="store-row">
+        <a class="btn btn-secondary" href="#" data-soon="App Store"><svg class="ic" aria-hidden="true"><use href="#i-apple"/></svg>Download for iPhone</a>
+        <a class="btn btn-dark" href="#" data-soon="Google Play"><svg class="ic" aria-hidden="true"><use href="#i-gplay"/></svg>Get it on Android</a>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="phone" role="img" aria-label="The Labwise Home screen: Hello Ada, 50 XP, 5 stars, 3 of 7 stamps, and the next practical, acid–base titration.">
+        <img src="assets/screen-home.jpg" alt="" width="786" height="1704">
+      </div>
+      <div class="float-card fc-1" aria-hidden="true">
+        <svg class="r" viewBox="0 0 48 52"><use href="#r-xp-l"/></svg>
+        <div><b class="fc-big">+30 XP</b><span>Practical complete</span></div>
+      </div>
+      <div class="float-card fc-2" aria-hidden="true">
+        <span class="disc leaf"><svg class="ic"><use href="#i-measure"/></svg></span>
+        <div><b>Measurement</b><span class="level"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><em>Secure</em></span></div>
+      </div>
+      <div class="float-card fc-3" aria-hidden="true">
+        <svg class="mk"><use href="#mark"/></svg>
+        <div><span class="mono violet">HINT 1 OF 3</span><span class="dark">What do you expect to<br>happen, and why?</span></div>
+      </div>
+      <div class="float-card fc-4" aria-hidden="true">
+        <svg class="r" viewBox="0 0 48 52"><use href="#r-stamp-l"/></svg>
+        <div><b>Stamp collected</b><span>3 of 7 in your passport</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 WHY -->
+<section class="section container" id="why" aria-labelledby="why-title">
+  <header class="sec-head center reveal">
+    <p class="eyebrow">WHY LABWISE</p>
+    <h2 id="why-title">Many school labs look like this.</h2>
+    <p class="lede">The room is there. The equipment often isn’t. So students read about practicals instead of doing them.</p>
+  </header>
+  <div class="compare">
+    <article class="cmp cmp-off reveal" aria-label="A typical school lab">
+      <p class="eyebrow-sm">A TYPICAL SCHOOL LAB</p>
+      <h3>The shelves are empty.</h3>
+      <ul class="slots">
+        <li><span class="slot-ic"><svg class="ic"><use href="#i-flask"/></svg></span><b>Burette and flasks</b><span>Not available</span></li>
+        <li><span class="slot-ic"><svg class="ic"><use href="#i-magnet"/></svg></span><b>Circuit kit</b><span>Not available</span></li>
+        <li><span class="slot-ic"><svg class="ic"><use href="#i-microscope"/></svg></span><b>Microscope</b><span>Not available</span></li>
+        <li><span class="slot-ic"><svg class="ic"><use href="#i-cpu"/></svg></span><b>Motors and gears</b><span>Not available</span></li>
+      </ul>
+    </article>
+    <article class="cmp cmp-on reveal" aria-label="With Labwise">
+      <p class="eyebrow-sm">WITH LABWISE</p>
+      <h3>Every subject has a bench.</h3>
+      <ul class="slots">
+        <li><span class="slot-ic coral"><svg class="ic"><use href="#i-flask"/></svg></span><b>Burette and flasks</b><span><svg class="ic xs coral-t"><use href="#i-check"/></svg>Chemistry</span></li>
+        <li><span class="slot-ic sky"><svg class="ic"><use href="#i-magnet"/></svg></span><b>Circuit kit</b><span><svg class="ic xs sky-t"><use href="#i-check"/></svg>Physics</span></li>
+        <li><span class="slot-ic leaf"><svg class="ic"><use href="#i-microscope"/></svg></span><b>Microscope</b><span><svg class="ic xs leaf-t"><use href="#i-check"/></svg>Biology</span></li>
+        <li><span class="slot-ic violet"><svg class="ic"><use href="#i-cpu"/></svg></span><b>Motors and gears</b><span><svg class="ic xs violet-t"><use href="#i-check"/></svg>Engineering</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- 03 HOW -->
+<section class="section container" id="how" aria-labelledby="how-title">
+  <header class="sec-head split reveal">
+    <div><p class="eyebrow">HOW IT WORKS</p><h2 id="how-title">One practical, start to finish.</h2></div>
+    <p class="lede">Every practical in every subject runs the same way, so students always know where they are.</p>
+  </header>
+  <ol class="steps">
+    <li class="step reveal">
+      <div class="panel">
+        <div class="ui-card tilt-l">
+          <p class="ui-title">Choose a practical</p>
+          <ul class="prac-list">
+            <li><span class="pi coral"><svg class="ic"><use href="#i-flask"/></svg></span><span><b>Acid–base titration</b><small>Chemistry</small></span></li>
+            <li class="sel"><span class="pi sky"><svg class="ic"><use href="#i-magnet"/></svg></span><span><b>Simple pendulum</b><small>Physics</small></span></li>
+            <li><span class="pi leaf"><svg class="ic"><use href="#i-plant"/></svg></span><span><b>Food tests</b><small>Biology</small></span></li>
+            <li><span class="pi violet"><svg class="ic"><use href="#i-cpu"/></svg></span><span><b>Build a circuit</b><small>Engineering</small></span></li>
+          </ul>
+        </div>
+      </div>
+      <span class="step-num" aria-hidden="true">1</span>
+      <h3>Pick a practical</h3>
+      <p>Choose a subject and a practical, then read the objective in plain words.</p>
+    </li>
+    <li class="step reveal">
+      <div class="panel">
+        <div class="ui-card">
+          <p class="ui-title">Equipment</p>
+          <ul class="tray">
+            <li class="held"><span class="ti"><svg class="ic sky-t"><use href="#i-magnet"/></svg></span>Magnet</li>
+            <li class="t-coral"><span class="ti"><svg class="ic coral-t"><use href="#i-flask"/></svg></span>Burette</li>
+            <li class="t-leaf"><span class="ti"><svg class="ic leaf-t"><use href="#i-microscope"/></svg></span>Microscope</li>
+          </ul>
+        </div>
+        <div class="holding"><span>Holding the magnet</span><span class="pb">Put back</span></div>
+      </div>
+      <span class="step-num" aria-hidden="true">2</span>
+      <h3>Do it at the bench</h3>
+      <p>Pick up the equipment, place it, measure and read it yourself. Nothing is read for you.</p>
+    </li>
+    <li class="step reveal">
+      <div class="panel">
+        <div class="ui-card tilt-r">
+          <p class="ui-title with-mark"><svg class="mk"><use href="#mark"/></svg>Great run!</p>
+          <ul class="review">
+            <li class="ok"><svg class="ic xs"><use href="#i-check"/></svg>You followed every step in order</li>
+            <li class="ok"><svg class="ic xs"><use href="#i-check"/></svg>Careful, accurate readings</li>
+            <li class="gold"><svg class="ic xs"><use href="#i-star"/></svg>Your guess was right · +10 XP</li>
+          </ul>
+        </div>
+      </div>
+      <span class="step-num" aria-hidden="true">3</span>
+      <h3>Debrief with AI</h3>
+      <p>The Lab Assistant reviews your run, checks your guess and explains what happened.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- 04 FEATURES -->
+<section class="section container" id="features" aria-labelledby="feat-title">
+  <header class="sec-head split reveal">
+    <div><p class="eyebrow">FEATURES</p><h2 id="feat-title">Everything a practical needs.</h2></div>
+    <p class="lede">An AI Lab Assistant, rewards that mark real work, skills you can see grow, and settings that fit every student.</p>
+  </header>
+  <div class="bento">
+    <article class="tile t-ai reveal">
+      <span class="ai-tag">AI</span>
+      <h3>Ask the Lab Assistant</h3>
+      <p>An AI lab partner that knows your practical and your step. It explains in Simple or Scientific mode, but the readings are always yours.</p>
+      <div class="chat" aria-label="Example conversation">
+        <p class="bubble you">Why does the bulb get dimmer?</p>
+        <div class="bubble bot">
+          <svg class="mk" aria-hidden="true"><use href="#mark"/></svg>
+          <div><p>More resistance in the circuit means less current reaches the bulb.</p>
+            <div class="toggle" role="group" aria-label="Explanation level"><button type="button" class="on" aria-pressed="true">Simple</button><button type="button" aria-pressed="false">Scientific</button></div>
+          </div>
+        </div>
+      </div>
+      <img class="ai-art" src="assets/art-lab-assistant.jpg" alt="" width="676" height="676" loading="lazy">
+    </article>
+
+    <article class="tile t-hints reveal">
+      <div class="tile-text"><h3>Hints, not answers</h3><p>Each ask climbs one step. Hints count as “with help”, never as lost marks.</p></div>
+      <ol class="ladder" aria-label="Hint ladder">
+        <li><span>1</span>Nudge</li>
+        <li class="on"><span>2</span>Question</li>
+        <li><span>3</span>Concept</li>
+        <li><span>4</span>Technique</li>
+      </ol>
+    </article>
+
+    <article class="tile t-xp reveal">
+      <h3>XP, stars and stamps</h3>
+      <p>Earned for every careful run.</p>
+      <ul class="rewards">
+        <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-xp"/></svg>+30 XP</li>
+        <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-star"/></svg>3 stars</li>
+        <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-stamp"/></svg>1 stamp</li>
+      </ul>
+    </article>
+
+    <article class="tile t-replay reveal">
+      <h3>Replay your run</h3>
+      <p>Watch every step you took, start to finish.</p>
+      <div class="player">
+        <span class="play"><svg class="ic"><use href="#i-play"/></svg></span>
+        <div><b>Step 4 · Record</b><small>2:14 / 6:41</small><span class="scrub"><i></i></span></div>
+      </div>
+    </article>
+
+    <article class="tile t-passport reveal">
+      <div class="tile-text"><h3>Your Lab passport</h3><p>Finish a practical and its stamp lands in your passport. Every subject has its own page.</p></div>
+      <div class="passport" aria-label="Chemistry passport, 3 of 7 stamps">
+        <div class="pp-top"><b>Chemistry</b><span class="pp-pill">3 OF 7</span></div>
+        <ul class="pp-grid">
+          <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-stamp-l"/></svg>Lab safety</li>
+          <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-stamp-l"/></svg>Equipment</li>
+          <li><svg viewBox="0 0 48 52" aria-hidden="true"><use href="#r-stamp-l"/></svg>Titration</li>
+          <li class="locked"><span><svg class="ic xs"><use href="#i-lock"/></svg></span>Neutralisation</li>
+          <li class="locked"><span><svg class="ic xs"><use href="#i-lock"/></svg></span>Making a salt</li>
+          <li class="locked"><span><svg class="ic xs"><use href="#i-lock"/></svg></span>Rates</li>
+          <li class="locked"><span><svg class="ic xs"><use href="#i-lock"/></svg></span>Gas tests</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="tile t-skills reveal">
+      <div class="tile-text"><h3>Skills you can see grow</h3><p>Seven practical skills, each a level backed by evidence from your runs.</p></div>
+      <ul class="skills">
+        <li><b>Measurement</b><span class="lv" data-l="3"></span><em>Secure</em></li>
+        <li><b>Observation</b><span class="lv" data-l="3"></span><em>Secure</em></li>
+        <li><b>Procedure</b><span class="lv" data-l="4"></span><em>Strong</em></li>
+        <li><b>Reasoning</b><span class="lv" data-l="1"></span><em>Starting</em></li>
+        <li><b>Safety</b><span class="lv" data-l="3"></span><em>Secure</em></li>
+      </ul>
+    </article>
+
+    <article class="tile t-chars reveal">
+      <h3>Pick your lab character</h3>
+      <p>Eight characters in coats and goggles. Change yours any time from your profile.</p>
+      <ul class="avatars">
+        <li><img src="assets/avatar-captain-titre.png" alt="Captain Titre" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-pipette-pro.png" alt="Pipette Pro" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-dr-meniscus.png" alt="Dr Meniscus" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-litmus-kid.png" alt="Litmus Kid" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-bunsen-boss.png" alt="Bunsen Boss" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-swirl-star.png" alt="Swirl Star" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-mole-master.png" alt="Mole Master" width="144" height="144" loading="lazy"></li>
+        <li><img src="assets/avatar-catalyst-cat.png" alt="Catalyst Cat" width="144" height="144" loading="lazy"></li>
+      </ul>
+    </article>
+
+    <article class="tile t-concepts reveal">
+      <h3>Concepts and quick checks</h3>
+      <p>Short concept pages for every subject, then a quick check.</p>
+      <ul class="topics"><li><i style="--c:var(--coral)"></i>Indicators</li><li><i style="--c:var(--sky)"></i>Circuits</li><li><i style="--c:var(--leaf)"></i>Cells</li><li><i style="--c:var(--violet)"></i>Gears</li></ul>
+    </article>
+
+    <article class="tile t-access reveal">
+      <h3>Built for everyone</h3>
+      <p>Text size, high contrast, reduced motion and colour-safe end points.</p>
+      <div class="aa"><b>Aa</b><span class="slider"><i></i></span></div>
+    </article>
+  </div>
+</section>
+
+<!-- 05 SUBJECTS -->
+<section class="section container" id="subjects" aria-labelledby="subj-title">
+  <header class="sec-head split reveal">
+    <div><p class="eyebrow">SUBJECTS</p><h2 id="subj-title">Four sciences. One lab.</h2></div>
+    <p class="lede">Every subject gets its own bench, equipment and practicals, built the same way: you do the work, Labwise helps you understand it.</p>
+  </header>
+  <div class="subjects">
+    <article class="subject s-chem reveal">
+      <div class="s-top"><span class="s-disc"><svg class="ic"><use href="#i-flask"/></svg></span><span class="status open">OPEN NOW</span></div>
+      <h3>Chemistry</h3>
+      <ul><li>Acid–base titration</li><li>Rates of reaction</li><li>Salt preparation</li><li>Chromatography</li></ul>
+      <img src="assets/art-chemistry.jpg" alt="" width="676" height="676" loading="lazy">
+    </article>
+    <article class="subject s-phy reveal">
+      <div class="s-top"><span class="s-disc"><svg class="ic"><use href="#i-magnet"/></svg></span><span class="status">COMING SOON</span></div>
+      <h3>Physics</h3>
+      <ul><li>Simple pendulum</li><li>Ohm’s law</li><li>Refraction</li><li>Specific heat</li></ul>
+      <img src="assets/art-physics.jpg" alt="" width="676" height="676" loading="lazy">
+    </article>
+    <article class="subject s-bio reveal">
+      <div class="s-top"><span class="s-disc"><svg class="ic"><use href="#i-plant"/></svg></span><span class="status">COMING SOON</span></div>
+      <h3>Biology</h3>
+      <ul><li>Food tests</li><li>Microscopy of cells</li><li>Osmosis</li><li>Transpiration</li></ul>
+      <img src="assets/art-biology.jpg" alt="" width="676" height="676" loading="lazy">
+    </article>
+    <article class="subject s-eng reveal">
+      <div class="s-top"><span class="s-disc"><svg class="ic"><use href="#i-cpu"/></svg></span><span class="status">COMING SOON</span></div>
+      <h3>Engineering</h3>
+      <ul><li>Build a circuit</li><li>Sensors</li><li>Gears and motion</li><li>Robot arm</li></ul>
+      <img src="assets/art-engineering.jpg" alt="" width="676" height="676" loading="lazy">
+    </article>
+  </div>
+</section>
+
+<!-- 06 FAQ -->
+<section class="section container faq-sec" id="faq" aria-labelledby="faq-title">
+  <div class="faq-left reveal">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq-title">Questions, answered.</h2>
+    <p class="lede">The short version of what people ask about Labwise. For the full story, read the case study.</p>
+    <div class="ask-card">
+      <ul class="ask-avatars" aria-hidden="true">
+        <li><img src="assets/avatar-captain-titre.png" alt="" width="48" height="48"></li>
+        <li><img src="assets/avatar-pipette-pro.png" alt="" width="48" height="48"></li>
+        <li><img src="assets/avatar-dr-meniscus.png" alt="" width="48" height="48"></li>
+        <li><img src="assets/avatar-litmus-kid.png" alt="" width="48" height="48"></li>
+        <li><img src="assets/avatar-bunsen-boss.png" alt="" width="48" height="48"></li>
+      </ul>
+      <h3>Still have a question?</h3>
+      <p>The case study covers the research, the decisions and every screen behind the first practical.</p>
+      <a class="btn btn-secondary" href="#" data-link="caseStudy">Read the case study <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+  <div class="accordion reveal" data-accordion>
+    <div class="acc-item open">
+      <h3><button type="button" aria-expanded="true" aria-controls="a1" id="q1">Is Labwise available now?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a1" role="region" aria-labelledby="q1"><p>Not yet. Labwise is being designed now, and the acid–base titration is a working prototype. The App Store and Google Play links go live at launch.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a2" id="q2">Which subjects can I study?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a2" role="region" aria-labelledby="q2" hidden><p>Chemistry comes first. Physics, biology and engineering follow, each with its own bench, equipment and practicals.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a3" id="q3">Does the AI give me the answers?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a3" role="region" aria-labelledby="q3" hidden><p>No. The Lab Assistant gives hints one step at a time, from a nudge to the technique. It never reads an instrument or states your result for you, and hints count as “with help”, never as lost marks.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a4" id="q4">Does it follow WAEC and NECO?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a4" role="region" aria-labelledby="q4" hidden><p>Practicals follow the international syllabus. WAEC and NECO alignment shows up as tags, so students preparing for those exams can find what they need.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a5" id="q5">What do I need to use it?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a5" role="region" aria-labelledby="q5" hidden><p>A phone. Labwise is built for phones first, with big targets, plain words and one thing at a time. A web version comes later.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a6" id="q6">Is it only for secondary school students?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a6" role="region" aria-labelledby="q6" hidden><p>Secondary school students come first, but anyone who wants to learn practical science properly can use it.</p></div>
+    </div>
+    <div class="acc-item">
+      <h3><button type="button" aria-expanded="false" aria-controls="a7" id="q7">Who designed Labwise?<span class="tg" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span></button></h3>
+      <div class="acc-panel" id="a7" role="region" aria-labelledby="q7" hidden><p>Labwise is designed by Yossee, a product designer who works with AI. The case study shows how it came together, from the first sketch to the working prototype.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 CLOSING -->
+<section class="container closing-wrap" aria-labelledby="close-title">
+  <div class="closing reveal">
+    <div class="closing-sky" aria-hidden="true">
+      <svg class="cloud c1" viewBox="0 0 220 90"><path d="M20 90C0 90 0 60 24 58C22 34 52 26 66 40C74 14 112 8 124 34C136 20 166 22 170 46C196 40 220 60 206 90Z"/></svg>
+      <svg class="cloud c2" viewBox="0 0 220 90"><path d="M20 90C0 90 0 60 24 58C22 34 52 26 66 40C74 14 112 8 124 34C136 20 166 22 170 46C196 40 220 60 206 90Z"/></svg>
+      <svg class="cloud c3" viewBox="0 0 220 90"><path d="M20 90C0 90 0 60 24 58C22 34 52 26 66 40C74 14 112 8 124 34C136 20 166 22 170 46C196 40 220 60 206 90Z"/></svg>
+      <svg class="cloud c4" viewBox="0 0 220 90"><path d="M20 90C0 90 0 60 24 58C22 34 52 26 66 40C74 14 112 8 124 34C136 20 166 22 170 46C196 40 220 60 206 90Z"/></svg>
+      <svg class="sp s1"><use href="#spark"/></svg><svg class="sp s2"><use href="#spark"/></svg><svg class="sp s3"><use href="#spark"/></svg><svg class="sp s4"><use href="#spark"/></svg><svg class="sp s5"><use href="#spark"/></svg><svg class="sp s6"><use href="#spark"/></svg><svg class="sp s7"><use href="#spark"/></svg>
+      <svg class="fl f1" viewBox="0 0 48 52"><use href="#r-xp"/></svg>
+      <svg class="fl f2" viewBox="0 0 48 52"><use href="#r-star"/></svg>
+      <svg class="fl f3" viewBox="0 0 48 52"><use href="#r-stamp"/></svg>
+      <span class="fl f4 xp-pill">+30 XP</span>
+      <svg class="fl f5" viewBox="0 0 56 56"><use href="#mark-white"/></svg>
+    </div>
+    <div class="closing-copy">
+      <h2 id="close-title">Your lab is ready.</h2>
+      <p>See how Labwise was designed, from an empty school lab to a working practical.</p>
+      <div class="store-row">
+        <a class="btn btn-secondary" href="#" data-link="caseStudy">Read the case study <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-dark" href="#" data-link="prototype" target="_blank" rel="noopener">Try the titration</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 08 FOOTER -->
+<footer class="footer container">
+  <div class="f-top">
+    <div class="f-brand">
+      <a class="brand" href="#top" aria-label="Labwise home"><svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg><span class="brand-word">Labwise</span></a>
+      <p>A virtual science lab for secondary school students.</p>
+    </div>
+    <nav class="f-cols" aria-label="Footer">
+      <div><p class="f-h">EXPLORE</p><ul><li><a href="#subjects">Subjects</a></li><li><a href="#how">How it works</a></li><li><a href="#features">Features</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><p class="f-h">PROJECT</p><ul><li><a href="#" data-link="caseStudy">Case study ↗</a></li><li><a href="#" data-link="prototype" target="_blank" rel="noopener">Titration prototype ↗</a></li><li><a href="#" data-link="behance" target="_blank" rel="noopener">Behance ↗</a></li></ul></div>
+      <div><p class="f-h">DESIGNER</p><ul><li><a href="#" data-link="portfolio" target="_blank" rel="noopener">Yossee</a></li><li><a href="#" data-link="x" target="_blank" rel="noopener">X · @yosseedesign</a></li><li><a href="#" data-link="portfolio" target="_blank" rel="noopener">Portfolio ↗</a></li></ul></div>
+    </nav>
+  </div>
+  <div class="f-bottom">
+    <p>© 2026 Labwise. Designed by Yossee.</p>
+    <ul class="f-subjects" aria-label="Subjects"><li><i style="--c:var(--coral)"></i>Chemistry</li><li><i style="--c:var(--sky)"></i>Physics</li><li><i style="--c:var(--leaf)"></i>Biology</li><li><i style="--c:var(--violet)"></i>Engineering</li></ul>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" data-toast></div>
+<script src="main.js" defer></script>
+</body>
+</html>
