@@ -35,20 +35,6 @@ document.querySelectorAll("[data-link]").forEach((a) => {
   }
 });
 
-// Store buttons: links go live at launch
-document.querySelectorAll("[data-soon]").forEach((a) => {
-  a.setAttribute("aria-describedby", "store-note");
-  a.addEventListener("click", (e) => {
-    e.preventDefault();
-    toast(`Labwise isn’t on ${a.dataset.soon} yet. Links go live at launch.`);
-  });
-});
-const note = document.createElement("span");
-note.id = "store-note";
-note.className = "sr-only";
-note.textContent = "Coming soon. Store links go live at launch.";
-document.body.appendChild(note);
-
 // Mobile menu · lab tray
 const menuBtn = document.querySelector("[data-menu]");
 const header = document.querySelector("[data-header]");
